@@ -14,7 +14,7 @@ mongoose.connect(IP_SERVER, {
   console.log("server DB Conected");
 })
 
-//SERVER
+//ESCUCHANDO SERVER
 app.listen(PORT, ()=> {
     console.log(`server conected in ${PORT}`);
 })
