@@ -1,0 +1,45 @@
+@import "../../../scss/index.scss";
+
+.menu-top {
+    display: flex;
+  &__left {
+      span {
+          color: #fff;
+          font-size: 1.4em;
+          margin-right: 15px;
+      }
+  
+    &__logo {
+      width: 30px;
+      padding: 0 0px 15px 0;
+      margin: 0 10px;
+    }
+  }
+
+  &__right {
+    position: absolute;
+    right: 0;
+
+    button {
+        background-color: transparent;
+        border: transparent;
+        border-radius: 30px !important;
+        color: #fff;
+        font-size: 1.2em;
+        margin: 3px auto ;
+        height: 3em;
+        width: 3em;
+        outline: none;
+
+        &:hover {
+            color: $primary-color;
+        }
+
+        &:focus,
+        &:active {
+            color: #fff;
+          
+        }
+    }
+  }
+}

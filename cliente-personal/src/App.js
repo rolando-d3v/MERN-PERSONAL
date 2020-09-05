@@ -1,21 +1,38 @@
-import React from 'react';
-import {BrowserRouter, Route, Switch, BrowserRouter} from 'react-router-dom'
-import routes from './config/routes'
-import { Form, Input, Button} from 'antd';
-import './App.scss';
-import Admin from './pages/Admin';
+import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import routes from "./config/routes";
+import "./App.scss";
 
 const App = () => {
-
   return (
-   <div className="app" >
-     <BrowserRouter>
-     <Switch>
-       <Route exact={true} path="/admin" component={AdminHome}  />
-     </Switch>
-     </BrowserRouter>
-   </div>
+    <div className="app">
+      <BrowserRouter>
+        <Switch>
+          {/* ITERANDO CONFIG DE ROUTES */}
+          {routes.map((route, index) => (
+            <RouteWithSubRoutes key={index} {...route} />
+          ))}
+        </Switch>
+      </BrowserRouter>
+    </div>
   );
 };
 
-export default App
+
+//componentes pra todas las Routes
+function RouteWithSubRoutes(route) {
+  return (
+    <Route
+      path={route.path}
+      exact={route.exact}
+      render={(props) => <route.component routes={route.routes} {...props} />}
+    />
+  );
+}
+
+export default App;
+
+
+
+
+
