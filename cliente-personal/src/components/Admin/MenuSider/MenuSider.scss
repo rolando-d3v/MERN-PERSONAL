@@ -1,0 +1,10 @@
+.admin-sider {
+    // position: fixed;
+    overflow: auto;
+    height: 100vh;
+ 
+    left: 0;
+    &__menu {
+     margin-top: 4em;
+    }
+}

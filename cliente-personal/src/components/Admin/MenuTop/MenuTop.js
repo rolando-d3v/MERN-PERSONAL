@@ -1,25 +1,32 @@
 import React from "react";
-import ep from '../../../assets/img/png/ep.png'
-import {AiOutlineMenuUnfold, AiOutlinePoweroff} from 'react-icons/ai'
+import { Link } from "react-router-dom";
+import ep from "../../../assets/img/png/ep.png";
+import {
+  AiOutlineMenuUnfold,
+  AiOutlinePoweroff,
+  AiOutlineMenuFold,
+} from "react-icons/ai";
 import "./MenuTop.scss";
 
-function MenuTop() {
+function MenuTop({ setMenuCollapsed, menuCollapsed }) {
   return (
     <div className="menu-top">
       <div className="menu-top__left">
-        <img className="menu-top__left__logo" src={ep}  alt="rolando" />
-        <span>EJERCITO</span>
-        <span
-        onClick={()=> console.log("on click")}
-        > 
-        <AiOutlineMenuUnfold/>
+        <Link to="/admin">
+          <img className="menu-top__left__logo" src={ep} alt="rolando" />
+          <span>EJERCITO</span>
+        </Link>
+        <span onClick={() => setMenuCollapsed(!menuCollapsed)}>
+          {menuCollapsed === false ? (
+            <AiOutlineMenuUnfold />
+          ) : (
+            <AiOutlineMenuFold />
+          )}
         </span>
       </div>
       <div className="menu-top__right">
-        <button
-        onClick={()=> console.log("Cerrar Sesion")}
-        > 
-        <AiOutlinePoweroff/>
+        <button onClick={() => console.log("Cerrar Sesion")}>
+          <AiOutlinePoweroff />
         </button>
       </div>
     </div>
