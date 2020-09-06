@@ -15,9 +15,7 @@ app.use(cors())
 
 
 //loading routers
-app.use(`/api/${API_VERSION}`, (req, res)=> {
-    res.json({message: 'hola mundo'})
-})
+app.use(`/api/${API_VERSION}`, require('./routers/user')) 
 
 
 module.exports = app
