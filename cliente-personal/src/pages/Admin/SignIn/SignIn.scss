@@ -1,45 +1,61 @@
 @import "../../../scss/index.scss";
 
-
 .sign-in {
-    background-image: url("../../../assets/img/jpg/background-v1.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
+  background-image: url("../../../assets/img/jpg/background-v1.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 
-    &__content {
-        // background-color: blue;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-        &__logo {
-            display: flex;
-          img {
-              width: 49px;
-              height: 49px;
-              margin:  0.4em 1em;
-          }  
-          span {
-              margin: 1em 0;
-              font-weight: bold;
-            //   padding-top: 0.9em;
-              color: #fff;
-              font-size: 1.2em;
-          }
-        }
-
-        &__tabs {
-            background: #42424242 !important;
-            margin: 3em auto;
-            // display: flex;
-            // justify-content: center;
-            
-            .rol {
-                text-align: center;
-                background-color: #fff;
-                width: 800px;
-            }
-        }
+    &__logo {
+      display: flex;
+      img {
+        width: 49px;
+        height: 49px;
+        margin: 0.4em 1em;
+      }
+      span {
+        margin: 1em 0;
+        font-weight: bold;
+        //   padding-top: 0.9em;
+        color: #fff;
+        font-size: 1.2em;
+      }
     }
+
+    &__tabs {
+      background: transparent;
+      margin: 3em 1em;
+      display: flex;
+      justify-content: center;
+      min-width: 90%;
+
+      .rol {
+        border-radius: 15px;
+        text-align: center;
+        background-color: #fff;
+        max-width: 900px;
+        width: 100%;
+
+        .ant-tabs-nav {
+            width: 100%;
+        }
+        
+        .ant-tabs-nav-list {
+            width: 100%;
+        }
+        
+        .ant-tabs-tab{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-right: 0;
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,21 @@
+.form-login {
+    padding: 1em;
+    
+    
+    Form {
+        margin: 2.5em 2em 1em ;
+        
+        button {
+            // background-color: red;
+            border-radius: 15px;
+            width: 100% !important;
+            max-width: 500px;
+        }
+        
+        .ant-form-item {
+            // background-color: red;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

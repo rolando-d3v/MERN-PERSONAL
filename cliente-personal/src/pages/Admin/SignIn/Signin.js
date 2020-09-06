@@ -2,7 +2,8 @@ import React from "react";
 import { Layout, Tabs } from "antd";
 import { Redirect } from "react-router-dom";
 import ep from "../../../assets/img/png/ep.png";
-import { AppleOutlined, AndroidOutlined } from "@ant-design/icons";
+import { UserOutlined, UserAddOutlined } from "@ant-design/icons";
+import RegisterForm from "../../../components/Admin/RegisterForm"
 import "./SignIn.scss";
 
 const Signin = () => {
@@ -22,24 +23,24 @@ const Signin = () => {
             <TabPane
               tab={
                 <span>
-                  <AppleOutlined />
+                  <UserOutlined />
                   Entrar
                 </span>
               }
               key="1"
             >
-              Tab 1
+              componente login
             </TabPane>
             <TabPane
               tab={
                 <span>
-                  <AndroidOutlined />
+                  <UserAddOutlined />
                   Nuevo Usuario
                 </span>
               }
               key="2"
             >
-              Tab 2
+              <RegisterForm/>
             </TabPane>
           </Tabs>
           ,
