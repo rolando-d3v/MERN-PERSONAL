@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
+import clienteAxios from "../../../api/clienteAxios";
 import "./RegisterForm.scss";
 
 const RegisterForm = () => {
@@ -18,43 +19,54 @@ const RegisterForm = () => {
 
   const { email, password, repeatPassword, privacyPolicy } = inputs;
 
-  //FORMULARIO PARA USAR CHEKED 
+  //FORMULARIO PARA USAR CHEKED
   const obtenerDatoState = (e) => {
-   if(e.target.name ==="privacyPolicy"){
-    setInputs({
+    if (e.target.name === "privacyPolicy") {
+      setInputs({
         ...inputs,
-        [e.target.name]: e.target.checked
-    })
-   } else {
-    setInputs({
+        [e.target.name]: e.target.checked,
+      });
+    } else {
+      setInputs({
         ...inputs,
-        [e.target.name]: e.target.value
-    })
-   }
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
-
-  const register = () => {
-     console.log(inputs);
-    if(!email || !password || !repeatPassword){
-        notification["error"]({
-            message: "todos los campo son obligatorios"
-        })
+  const register = async () => {
+    console.log(inputs);
+    if (!email || !password || !repeatPassword) {
+      notification["error"]({
+        message: "todos los campo son obligatorios",
+      });
     } else if (password !== repeatPassword) {
+      notification["error"]({
+        message: "el password es diferente",
+      });
+    } else {
+      const rol = await clienteAxios.post("/sign-up", inputs);
+      if (rol.data.code === 11000) {
         notification["error"]({
-            message: "el password es diferente"
-        })
+          message: rol.data.message,
+        });
+      } else {
+        notification["success"]({
+          message: rol.data.message,
+        });
+        console.log(rol);
+      }
     }
-  }
+  };
 
   return (
-    <div className="form-login" >
-      <Form  {...layout} name="basic"  onFinish={register}  >
-      <h1>Registro</h1>
+    <div className="form-login">
+      <Form {...layout} name="basic" onFinish={register}>
+        <h1>Registro</h1>
         <Form.Item
           label="Email"
           name="email"
-          rules={[{  message: "Porfavor ingresa tu email!" }]}
+          rules={[{ message: "Porfavor ingresa tu email!" }]}
         >
           <Input
             prefix={
@@ -113,7 +125,7 @@ const RegisterForm = () => {
           />
         </Form.Item>
 
-        <Form.Item name="remember"   >
+        <Form.Item name="remember">
           <Checkbox
             name="privacyPolicy"
             checked={privacyPolicy}
@@ -125,7 +137,7 @@ const RegisterForm = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit" >
+          <Button type="primary" htmlType="submit">
             Registrar User
           </Button>
         </Form.Item>

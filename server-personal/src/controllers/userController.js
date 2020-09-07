@@ -24,7 +24,7 @@ exports.signUp = async (req, res, next)=> {
     }
    } catch (error) {
     if(error.code === 11000) {
-        res.send({message: "el email ya existe"})
+        res.send({message: "el email ya existe", code: error.code})
      }  
      res.send(error) 
      next() 
