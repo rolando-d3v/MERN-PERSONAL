@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 // import { AiFillHome } from "react-icons/ai";
 import {
-  AppstoreOutlined,
   HomeOutlined,
-  MenuFoldOutlined,
   PieChartOutlined,
   DesktopOutlined,
   ContainerOutlined,
-  MailOutlined,
 } from "@ant-design/icons";
 import "./MenuSider.scss";
 

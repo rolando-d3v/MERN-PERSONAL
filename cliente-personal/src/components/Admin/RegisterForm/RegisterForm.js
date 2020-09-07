@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
-import { UserOutlined, MailOutlined, LockOutlined } from "@ant-design/icons";
+import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import "./RegisterForm.scss";
 
 const RegisterForm = () => {
@@ -34,19 +34,27 @@ const RegisterForm = () => {
   };
 
 
-  const register = (e) => {
-      e.preventDefault()
-
+  const register = () => {
+     console.log(inputs);
+    if(!email || !password || !repeatPassword){
+        notification["error"]({
+            message: "todos los campo son obligatorios"
+        })
+    } else if (password !== repeatPassword) {
+        notification["error"]({
+            message: "el password es diferente"
+        })
+    }
   }
 
   return (
-    <div className="form-login"  >
-      <Form {...layout} name="basic" initialValues={{ remember: true }} onSubmit={register} >
+    <div className="form-login" >
+      <Form  {...layout} name="basic"  onFinish={register}  >
       <h1>Registro</h1>
         <Form.Item
           label="Email"
           name="email"
-          rules={[{ required: true, message: "Porfavor ingresa tu email!" }]}
+          rules={[{  message: "Porfavor ingresa tu email!" }]}
         >
           <Input
             prefix={
@@ -105,7 +113,7 @@ const RegisterForm = () => {
           />
         </Form.Item>
 
-        <Form.Item name="remember" >
+        <Form.Item name="remember"   >
           <Checkbox
             name="privacyPolicy"
             checked={privacyPolicy}
@@ -117,7 +125,7 @@ const RegisterForm = () => {
         </Form.Item>
 
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" >
             Registrar User
           </Button>
         </Form.Item>
