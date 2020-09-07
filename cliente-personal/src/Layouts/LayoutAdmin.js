@@ -44,8 +44,8 @@ function LayoutAdmin(props) {
     </Layout>
   );
 }
-
 export default LayoutAdmin;
+
 
 //componente para Routes Admin
 function LoadRoutes({ routes }) {

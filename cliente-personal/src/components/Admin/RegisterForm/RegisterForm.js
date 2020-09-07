@@ -11,13 +11,14 @@ const RegisterForm = () => {
   };
 
   const [inputs, setInputs] = useState({
+    name: "",
     email: "",
     password: "",
     repeatPassword: "",
     privacyPolicy: false,
   });
 
-  const { email, password, repeatPassword, privacyPolicy } = inputs;
+  const { name, email, password, repeatPassword, privacyPolicy } = inputs;
 
   //FORMULARIO PARA USAR CHEKED
   const obtenerDatoState = (e) => {
@@ -36,7 +37,7 @@ const RegisterForm = () => {
 
   const register = async () => {
     console.log(inputs);
-    if (!email || !password || !repeatPassword) {
+    if (!email || !password || !repeatPassword || !privacyPolicy) {
       notification["error"]({
         message: "todos los campo son obligatorios",
       });
@@ -63,6 +64,25 @@ const RegisterForm = () => {
     <div className="form-login">
       <Form {...layout} name="basic" onFinish={register}>
         <h1>Registro</h1>
+        <Form.Item
+          label="Name"
+          name="name"
+          rules={[{ message: "Porfavor ingresa tu Nombre!" }]}
+        >
+          <Input
+            prefix={
+              <MailOutlined
+                className="site-form-item-icon"
+                style={{ color: "#42424242" }}
+              />
+            }
+            placeholder="ingresa tu Nombre"
+            type="text"
+            name="name"
+            value={name}
+            onChange={obtenerDatoState}
+          />
+        </Form.Item>
         <Form.Item
           label="Email"
           name="email"
