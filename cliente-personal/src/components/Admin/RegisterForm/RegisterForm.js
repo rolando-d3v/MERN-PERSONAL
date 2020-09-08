@@ -35,8 +35,18 @@ const RegisterForm = () => {
     }
   };
 
+
+  const resetx = () => {
+    setInputs({
+      name: '',
+      email: '',
+      password: '',
+      repeatPassword: '',
+      privacyPolicy: false,
+    });
+  }
+
   const register = async () => {
-    console.log(inputs);
     if (!email || !password || !repeatPassword || !privacyPolicy) {
       notification["error"]({
         message: "todos los campo son obligatorios",
@@ -55,8 +65,9 @@ const RegisterForm = () => {
         notification["success"]({
           message: rol.data.message,
         });
-        console.log(rol);
+        
       }
+      resetx()
     }
   };
 
