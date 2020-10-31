@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const app = require('./app')
 
 //IMPORT DE CONFIG
+const app = require('./app')
 const {IP_SERVER, PORT} = require('./config')
 
 //SERRVER MONGODB
